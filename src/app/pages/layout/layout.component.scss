@@ -1,0 +1,175 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .app-header {
+  height: 60px;
+  background-color: #0b3520;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .toolbar-left,
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+       .my-request {
+        color: #fff;
+        cursor: pointer;
+      }
+      .support-ticket {
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    .logo-image {
+      height: 32px;
+      width: auto;
+    }
+
+    .icon-button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #ffff;
+      cursor: pointer;
+      padding: 8px;
+
+      i {
+        pointer-events: none;
+      }
+    }
+
+    .profile-button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+
+      .profile-image {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      &:hover .profile-image {
+        outline: 2px solid #007acc;
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+
+  .main-columns {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+
+    .sidebar {
+      flex: 0 0 60px;
+      background-color: #f9f9f9;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      box-shadow: inset -1px 0 0 #ddd;
+
+      .icon-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin: 20px 0;
+
+          .k-icon {
+            font-size: 24px;
+            cursor: pointer;
+
+            &:hover {
+              color: #1abc9c;
+            }
+          }
+        }
+      }
+    }
+
+    .filters {
+      flex: 0 0 250px;
+      background-color: #f9f9f9;
+      box-shadow: inset -1px 0 0 #ddd;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+
+      .filter-contracts{
+          padding: 10px;
+        border-bottom: 1px solid #ccc;
+       .arrow-icon{
+        float: right;
+      }
+    }
+
+    .tab-group {
+  display: inline-flex;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+
+  .tab-button {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
+    border-right: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+    &.active {
+      background-color: #007acc;
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
+
+.tab-content {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+    }
+
+    .content {
+      flex: 1 1 auto;
+      padding: 20px;
+      background-color: #fff;
+      overflow: auto;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<div class="login-container">
+     <div class="logo">
+    <img src="assets/images/Logo.png" alt="Logo" />
+  </div>
+  <h2>Sign in</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    
+    <div class="form-field">
+      <label for="username">SSO ID <span class="required">*</span></label>
+      <kendo-textbox
+        id="username"
+        formControlName="ssoid"
+        [placeholder]="'Enter ssoid'"
+        [style.width.px]="300"
+      ></kendo-textbox>
+    </div>
+    <br />
+
+    <!-- Password Label and Kendo UI TextBox -->
+    <div class="form-field">
+      <label for="password">Password <span class="required">*</span></label>
+      <kendo-textbox
+        id="password"
+        formControlName="password"
+        [placeholder]="'Enter password'"
+        [style.width.px]="300"
+        [type]="'password'"
+      ></kendo-textbox>
+    </div>
+    <br />
+
+    <div class="form-field remember-me">
+      <input type="checkbox" id="rememberMe" formControlName="rememberMe" />
+      <label for="rememberMe">Remember Me</label>
+    </div>
+
+    <!-- Submit Button -->
+    <button kendoButton [disabled]="loginForm.invalid" type="submit">
+      Login
+    </button>
+  </form>
+</div>
