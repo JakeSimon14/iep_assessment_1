@@ -31,20 +31,34 @@
     </ul>
   </div>
 
-  <!-- Filter Section -->
   <div class="filters">
     <div class="filter-contracts">
         <span class="filter-contracts-head">Filter Contracts</span>
         <span class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></span>
     </div>
-    <div class="tab-group">
-  <button class="tab-button active">Tab 1</button>
-  <button class="tab-button">Tab 2</button>
-  <button class="tab-button">Tab 3</button>
+    <div class="tab-main-container">
+    <div class="tab-container">
+  <div class="tab-buttons">
+        @for (tab of tabs;track tab; let i = $index) {
+        <button
+          class="tab"
+          [class.active]="i === activeTabIndex"
+          (click)="selectTab(i)"
+        >
+          {{ tab }}
+        </button>
+      }
+  </div>
 </div>
-
-<div class="tab-content">
-  <p>Content for Tab 1</p>
+<div class="search-container">
+    <input
+      type="text"
+      [formControl]="searchControl"
+      placeholder=" Search job number or contract name"
+    />
+  </div>
+  <div class="tab-content">
+ <app-recursive-tree [items]="filterItems" (itemSelected)="onItemSelect($event)"></app-recursive-tree>
 </div>
     <!--<kendo-textbox placeholder="Search..."></kendo-textbox>
     <kendo-dropdownlist
@@ -53,12 +67,35 @@
     ></kendo-dropdownlist> -->
   </div>
 
-  <!-- Content Section -->
   <div class="content">
     <!--<kendo-grid [data]="gridData" [height]="400">
       <kendo-grid-column field="id" title="ID"></kendo-grid-column>
       <kendo-grid-column field="name" title="Name"></kendo-grid-column>
     </kendo-grid> -->
+
+    
   </div>
+</div>
+<div>
+  <main class="content">
+    <h3 *ngIf="selectedItems.length === 0">No item selected</h3>
+
+    <table *ngIf="selectedItems.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Contract</th>
+          <th>Job Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of selectedItems">
+          <td>{{ item.id }}</td>
+          <td>{{ item.contractname }}</td>
+          <td>{{ item.jobnumber }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
 </div>
 </div>

@@ -1,0 +1,18 @@
+.tree-item {
+  margin: 5px 0;
+  padding-left: 20px;
+  user-select: none;
+}
+
+.children {
+  padding-left: 15px;
+  border-left: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+button {
+  margin-left: 10px;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+}

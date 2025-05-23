@@ -1,0 +1,17 @@
+<div class="tree-item">
+     <button *ngIf="item.children?.length" (click)="onToggleCollapse()">
+    {{ item.isCollapsed ? '+' : '-' }}
+  </button>
+  <input type="checkbox" [checked]="item.isSelected" (change)="onCheckboxChange($event)" />
+  <span>{{ item.contractname }} ({{ item.jobnumber }})</span>
+ 
+
+  <div *ngIf="item.children?.length && !item.isCollapsed" class="children">
+    <app-recursive-node
+      *ngFor="let child of item.children"
+      [item]="child"
+      (toggleCollapse)="toggleCollapse.emit($event)"
+      (toggleSelect)="toggleSelect.emit($event)">
+    </app-recursive-node>
+  </div>
+</div>

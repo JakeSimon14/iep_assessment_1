@@ -1,0 +1,19 @@
+<div>
+  <label class="current-projects">
+    <input  #checkbox
+      type="checkbox"
+      [checked]="isAllSelected()"
+      (change)="selectAll(checkbox.checked)"
+    />
+    Current Projects
+  </label>
+
+  <div class="tree">
+    <app-recursive-node
+      *ngFor="let item of items"
+      [item]="item"
+      (toggleCollapse)="toggleCollapse($event)"
+      (toggleSelect)="toggleSelect($event)">
+    </app-recursive-node>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { InputsModule, TextBoxModule } from '@progress/kendo-angular-inputs';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { FilterItem } from '../../models/filter-item.model';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent{
     private authService: AuthService,
     private router: Router
   ) {}
+
 
   ngOnInit() {
     this.loginForm = this.fb.group({
