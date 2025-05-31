@@ -5,6 +5,7 @@ export interface FilterItem {
   myContract?: boolean;  
   isFavourite?: boolean; 
   isSelected: boolean;
-  isCollapsed: boolean;  
+  isCollapsed: boolean; 
+  assignedToUser?: boolean; 
   children?: FilterItem[]; 
 }

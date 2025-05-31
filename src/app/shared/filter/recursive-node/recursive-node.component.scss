@@ -16,3 +16,13 @@ button {
   user-select: none;
   border: none;
 }
+
+.fa-star {
+  margin-left: 8px;
+  color: gray;
+  cursor: pointer;
+}
+
+.fa-star.filled {
+  color: gold;
+}

@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class RecursiveNodeComponent {
 
   @Input() item!: FilterItem;
+  @Input() hasParent = false;
   @Output() toggleCollapse = new EventEmitter<FilterItem>();
   @Output() toggleSelect = new EventEmitter<{ item: FilterItem, selected: boolean }>();
 
@@ -24,4 +25,7 @@ export class RecursiveNodeComponent {
     this.toggleCollapse.emit(this.item);
   }
   
+  toggleFavourite(item: FilterItem) {
+  item.isFavourite = !item.isFavourite;
+}
 }

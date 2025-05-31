@@ -1,0 +1,29 @@
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 22px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-left: 4px solid transparent;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &.active {
+      background-color: #e0e0e0;
+      border-left-color: #007acc;
+      font-weight: bold;
+    }
+
+    .label {
+      margin-left: 10px;
+    }
+  }
+}
