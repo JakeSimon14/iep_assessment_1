@@ -2,7 +2,13 @@
   margin: 5px 0;
   padding-left: 20px;
   user-select: none;
+  font-size: small;
+
+  input[type="checkbox"] {
+  color: green;
 }
+}
+
 
 .children {
   padding-left: 15px;
@@ -21,8 +27,9 @@ button {
   margin-left: 8px;
   color: gray;
   cursor: pointer;
+  width: 20%;
 }
 
 .fa-star.filled {
-  color: gold;
+  color: #147D64;
 }

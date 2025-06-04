@@ -5,14 +5,15 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 import { FilterItem } from '../../models/filter-item.model';
 import { RecursiveTreeComponent } from "../../shared/filter/recursive-tree/recursive-tree.component";
 import { HeaderComponent } from "../../shared/header/header.component";
-import { RouterOutlet } from '@angular/router';
 import { SidebarMenuComponent } from "../../shared/sidebar-menu/sidebar-menu.component";
 import { MockContractService } from '../../services/mock-api/mock-contract.service';
+import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-otr-layout',
   standalone: true,
-  imports: [RouterOutlet, ToolBarModule, CommonModule, ReactiveFormsModule, RecursiveTreeComponent, HeaderComponent, SidebarMenuComponent],
+  imports: [ToolBarModule, CommonModule, ReactiveFormsModule, RecursiveTreeComponent, HeaderComponent, SidebarMenuComponent, DashboardComponent,RouterModule],
   templateUrl: './otr-layout.component.html',
   styleUrl: './otr-layout.component.scss'
 })
@@ -40,17 +41,16 @@ originalItems: FilterItem[] = [];
 applyFilters() {
   const search = this.searchControl.value?.toLowerCase() || '';
 
-  // Filter base on active tab
   switch(this.activeTabIndex) {
-    case 0: // My Contracts
+    case 0:
       this.filterItems = this.originalItems.filter(item => item.assignedToUser);
       break;
 
-    case 1: // All Contracts
-      this.filterItems = this.originalItems.slice(); // all
+    case 1:
+      this.filterItems = this.originalItems.slice();
       break;
 
-    case 2: // Favourites
+    case 2:
       this.filterItems = this.originalItems.filter(item => item.isFavourite);
       break;
   }
@@ -68,7 +68,7 @@ applyFilters() {
 
   onMenuChange(route: string): void {
     debugger;
-  this.router.navigate([route]); // Navigates to selected route
+  this.router.navigate([route]); 
 }
 
 ngOnInit() {

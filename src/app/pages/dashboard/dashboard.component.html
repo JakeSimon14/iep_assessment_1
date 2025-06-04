@@ -1,1 +1,67 @@
-<p>dashboard works!</p>
+<form [formGroup]="filterForm">
+  <div class="dashboard-container">
+
+    <!-- Header Row -->
+    <div class="header-row">
+  <div class="operation-title">
+    <h1>Operation</h1>
+  </div>
+
+  <div class="upload-actions">
+    <div class="upload-info">
+      <span class="upload-label">
+  Last uploaded: <strong class="upload-date">04 Feb 2025</strong>
+</span>
+      <div class="upload-percentage">71%</div>
+    </div>
+    <button kendoButton look="outline" class="do-vs-buy-btn">Do vs Buy</button>
+  </div>
+</div>
+
+
+    <!-- Tabs with content -->
+    <kendo-tabstrip>
+      <kendo-tabstrip-tab title="ISPO">
+        <ng-template kendoTabContent>
+          <!-- Breadcrumb / Project Line -->
+          <div class="breadcrumb-line">
+            <strong>1104096-NCIC III Ammonia/Urea Plant - STCC - Compression, 1104088-Ar Ratawi, 9000133-Leviathan Tex, 1709043-...</strong>
+          </div>
+
+          <!-- Alert Box -->
+          <div class="reassign-alert" *ngIf="hasReassignRequests">
+            <span>You have received <strong>3 primary resource re-assignment requests</strong></span>
+            <a href="#">View requests</a>
+          </div>
+
+      
+
+          <!-- Activity Table -->
+          <!-- <div class="activity-table">
+            <kendo-grid
+              [data]="activityData"
+              [pageSize]="10"
+              [pageable]="true"
+              [sortable]="true"
+              scrollable="scrollable"
+            >
+              <kendo-grid-column field="projectId" title="Project ID" [width]="150"></kendo-grid-column>
+              <kendo-grid-column field="activityId" title="Activity ID" [width]="150"></kendo-grid-column>
+              <kendo-grid-column field="activityName" title="Activity Name"></kendo-grid-column>
+              <kendo-grid-column field="primaryResource" title="Primary Resource Name" [width]="200"></kendo-grid-column>
+              <kendo-grid-column field="earlyDate" title="Early Date" [width]="150" format="{0:MM-dd-yyyy}"></kendo-grid-column>
+            </kendo-grid>
+          </div> -->
+        </ng-template>
+      </kendo-tabstrip-tab>
+
+      <kendo-tabstrip-tab title="VDR"></kendo-tabstrip-tab>
+      <kendo-tabstrip-tab title="VDR Revision"></kendo-tabstrip-tab>
+      <kendo-tabstrip-tab title="VDR Finalization"></kendo-tabstrip-tab>
+      <kendo-tabstrip-tab title="OTD Trends"></kendo-tabstrip-tab>
+      <kendo-tabstrip-tab title="Engineering Productivity"></kendo-tabstrip-tab>
+      <kendo-tabstrip-tab title="Technical Alignment"></kendo-tabstrip-tab>
+    </kendo-tabstrip>
+
+  </div>
+</form>

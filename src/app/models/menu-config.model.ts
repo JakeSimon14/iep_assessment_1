@@ -6,7 +6,11 @@ export interface OtrMenuItem {
 }
 
 export const ConstOtrDashboardMenu: OtrMenuItem[] = [
-  { id: 'dashboard', label: 'Dashboard', icon: 'k-icon k-i-home', route: '/dashboard' },
-  { id: 'profile', label: 'Profile', icon: 'k-icon k-i-user', route: '/profile' },
-  { id: 'settings', label: 'Settings', icon: 'k-icon k-i-gear', route: '/settings' }
+  { id: 'dashboard', label: 'Dashboard', icon: 'home', route: '/dashboard' },
+  { id: 'folder_managed', label: 'Folder Managed', icon: 'folder_managed', route: '/folder_managed' },
+  { id: 'folder', label: 'Folder', icon: 'folder', route: '/folder' },
+   { id: 'verified', label: 'Verified', icon: 'verified', route: '/verified' },
+  { id: 'engineering', label: 'Engineering', icon: 'engineering', route: '/engineering' },
+  { id: 'settings', label: 'Settings', icon: 'settings', route: '/settings' }
 ];
+

@@ -1,9 +1,8 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 96vh;
 
- 
 
 
   .main-columns {
@@ -131,5 +130,11 @@
       background-color: #fff;
       overflow: auto;
     }
+  }
+
+    .dashboard-main-content {
+    flex: 1;   
+    overflow-y: auto;
+    background-color: #fff;
   }
 }

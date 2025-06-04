@@ -13,11 +13,12 @@
   <span>{{ item.contractname }} ({{ item.jobnumber }})</span>
  
  <i 
-    *ngIf="!hasParent" 
-    class="fa-star" 
-    [class.filled]="item.isFavourite" 
-    (click)="toggleFavourite(item)">
-  </i>
+  *ngIf="!hasParent" 
+  class="fa-star" 
+  [class.filled]="item.isFavourite" 
+  (click)="toggleFavourite(item)">
+  <span class="material-symbols-outlined">kid_star</span>
+</i>
   
   <div *ngIf="item.children?.length && !item.isCollapsed" class="children">
     <app-recursive-node

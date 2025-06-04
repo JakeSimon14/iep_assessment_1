@@ -1,0 +1,219 @@
+.dashboard-container {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+
+  .header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #f4f6f9;
+
+  .operation-title {
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #1a1a1a;
+    }
+  }
+
+  .upload-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .upload-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .upload-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+
+  .upload-date {
+    font-weight: 600;
+    color: #8BF5E1;
+    margin-left: 0.25rem;
+  }
+}
+
+      .upload-percentage {
+        background-color: #e6f4f1;
+        color: #147d64;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+    }
+
+    .do-vs-buy-btn {
+      border-color: #147d64;
+       background-color: #147d64;
+        color: #fff;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+
+  kendo-tabstrip {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+
+    ::ng-deep .k-tabstrip-items-wrapper {
+      border-bottom: 1px solid #ddd;
+    }
+
+    ::ng-deep .k-tabstrip-items .k-item {
+      padding: 0.75rem 1.25rem;
+      font-weight: 500;
+    }
+
+    ::ng-deep .k-tabstrip-items .k-state-active {
+      border-bottom: 3px solid #1976d2;
+      color: #1976d2;
+    }
+  }
+
+  .breadcrumb-line {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #0d47a1;
+    border-radius: 4px;
+  }
+
+  .reassign-alert {
+    background-color: #fff3e0;
+    border-left: 4px solid #fb8c00;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      color: #fb8c00;
+      font-weight: 600;
+      text-decoration: underline;
+      font-size: 0.875rem;
+    }
+  }
+
+  .filter-header {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #37474f;
+    }
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+
+    kendo-dropdownlist,
+    kendo-multiselect {
+      min-width: 160px;
+      max-width: 200px;
+    }
+
+    .clear-filter {
+      align-self: center;
+      color: #1976d2;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 500;
+    }
+  }
+
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    ::ng-deep .k-chip {
+      background: #e8eaf6;
+      color: #1a237e;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.4rem 0.75rem;
+      border-radius: 16px;
+    }
+  }
+
+  .weekly-cards-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    .nav-arrow {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #444;
+    }
+
+    .weekly-cards {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 0.5rem 1rem;
+
+      .week-card {
+        min-width: 200px;
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        font-size: 0.9rem;
+
+        &.today {
+          background-color: #e3f2fd;
+          border-left: 4px solid #2196f3;
+        }
+
+        strong {
+          display: block;
+          font-size: 1rem;
+          color: #0d47a1;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+  }
+
+  .activity-table {
+    margin-top: 1.5rem;
+
+    kendo-grid {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+      ::ng-deep .k-grid-header {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
