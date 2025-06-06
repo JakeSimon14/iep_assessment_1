@@ -82,4 +82,52 @@
         }
     }
   }
+
+  .profile-wrapper {
+  position: relative;
+  cursor: pointer;
+
+  .profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .profile-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 2px 6px;
+  }
+
+  .profile-menu {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    background: white;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+    z-index: 1000;
+
+    li {
+      padding: 8px 16px;
+      cursor: pointer;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+}
+
 }
