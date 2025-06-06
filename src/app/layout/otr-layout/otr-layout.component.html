@@ -7,12 +7,18 @@
   <app-sidebar-menu (selectionChange)="onMenuChange($event)"></app-sidebar-menu>
   
 
-  <div class="filters">
-    <div class="filter-contracts">
-        <span class="filter-contracts-head">Filter Contracts</span>
-        <span class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></span>
-    </div>
-    <div class="tab-main-container">
+ <div class="filter-contracts" [ngClass]="{ collapsed: collapsed }">
+    <div class="filter-header">
+    <h3 *ngIf="!collapsed">Filter Contracts</h3>
+    <span
+  class="material-symbols-outlined toggle-icon"
+  (click)="toggleCollapse()"
+>
+  {{ collapsed ? 'arrow_forward' : 'arrow_back' }}
+</span>
+  </div>
+  
+  <div class="tab-main-container" *ngIf="!collapsed">
     <div class="tab-container">
   <div class="tab-buttons">
         @for (tab of tabs;track tab; let i = $index) {
@@ -26,15 +32,59 @@
       }
   </div>
 </div>
-<div class="search-container">
-    <input
-      type="text"
-      [formControl]="searchControl"
-      placeholder=" Search job number or contract name"
+ <div class="search-container">
+      <input type="text" kendoTextBox placeholder="Search job number or contract name..." [formControl]="searchControl" />
+      <!-- <span class="material-symbols-outlined search-icon">search</span> -->
+    </div>
+
+        <!-- Advanced Search -->
+    <button kendoButton class="advanced-search-btn" look="outline">
+      Advanced Search
+    </button>
+
+    <!-- Result Count -->
+    <div class="results-count">
+      Result: {{ filterItems.length }} Contracts
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Select All / Unselect All Toggle -->
+       <div class="filter select-all-toggle">
+       <label class="current-projects">
+     <input  #checkbox
+      type="checkbox"
+      [checked]="isAllSelected()"
+      (change)="selectAll(checkbox.checked)"
     />
-  </div>
-  <div class="tab-content">
- <app-recursive-tree [items]="filterItems" (itemSelected)="onItemSelect($event)"></app-recursive-tree>
+    Current Projects
+  </label>
+    </div>
+ 
+    <kendo-treeview
+  [nodes]="filterItems"
+  [children]="fetchChildren"
+  [hasChildren]="hasChildren"
+  (expandedKeys)="expandedKeys"
+  [(checkedKeys)]="checkedKeys"
+  [kendoTreeViewCheckable]="{ checkChildren: true }"
+  [textField]="'contractname'"
+  (checkedKeysChange)="onCheckedKeysChange($event)"
+>
+  <ng-template kendoTreeViewNodeTemplate let-dataItem>
+    <span>
+      {{ dataItem.contractname }} ({{ dataItem.jobnumber }})
+    </span>
+   <span
+  *ngIf="!hasParent(dataItem)"
+  class="material-symbols-outlined star-icon"
+  [class.filled]="dataItem.isFavourite"
+  (click)="toggleFavourite(dataItem)"
+>
+  star
+</span>
+  </ng-template>
+</kendo-treeview>
 </div>
     <!--<kendo-textbox placeholder="Search..."></kendo-textbox>
     <kendo-dropdownlist
@@ -43,14 +93,7 @@
     ></kendo-dropdownlist> -->
   </div>
 
-  <div class="content">
-    <!--<kendo-grid [data]="gridData" [height]="400">
-      <kendo-grid-column field="id" title="ID"></kendo-grid-column>
-      <kendo-grid-column field="name" title="Name"></kendo-grid-column>
-    </kendo-grid> -->
 
-    
-  </div>
 </div>
 <div class="dashboard-main-content">
      <router-outlet></router-outlet>

@@ -12,22 +12,49 @@
 
  
 
-    .filters {
-      flex: 0 0 250px;
-      background-color: #f9f9f9;
-      box-shadow: inset -1px 0 0 #ddd;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      overflow-y: auto;
+    .filter-contracts {
+      background: #fff;
+  border-right: 1px solid #ccc;
+  padding: 5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  transition: width 0.3s ease;
 
-      .filter-contracts{
-          padding: 10px;
-        border-bottom: 1px solid #ccc;
-       .arrow-icon{
-        float: right;
-      }
+  &.collapsed {
+    width: 40px;
+    padding: 1rem 0.5rem;
+    align-items: center;
+
+    .filter-header h3,
+    .tab-buttons,
+    .search-bar,
+    .advanced-search-btn,
+    .results-count,
+    kendo-treeview,
+    .tab-main-container {
+      display: none !important;
     }
+
+    .toggle-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+
+    .toggle-icon {
+      cursor: pointer;
+      font-size: 24px;
+    }
+  }
+    
 
    .tab-main-container {
  
@@ -80,7 +107,6 @@
 
   .tab-content {
     margin-top: 14px;
-    padding: 16px;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: inset 0 0 0 1px #ddd;
@@ -106,6 +132,17 @@
     align-items: center;
     gap: 0.5rem;
   }
+
+  .star-icon {
+  cursor: pointer;
+  font-size: 20px;
+  color: #ccc;
+  transition: color 0.3s;
+
+  &.filled {
+    color: #147D64; // same green as used in the rest of the UI
+  }
+}
 
   .expand-btn {
     background: none;

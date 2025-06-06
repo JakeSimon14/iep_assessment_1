@@ -1,67 +1,221 @@
-<form [formGroup]="filterForm">
-  <div class="dashboard-container">
-
-    <!-- Header Row -->
-    <div class="header-row">
-  <div class="operation-title">
-    <h1>Operation</h1>
-  </div>
-
-  <div class="upload-actions">
-    <div class="upload-info">
-      <span class="upload-label">
-  Last uploaded: <strong class="upload-date">04 Feb 2025</strong>
-</span>
-      <div class="upload-percentage">71%</div>
+<div class="dashboard-container">
+  <!-- Header Row -->
+  <div class="header-row">
+    <div class="operation-title">
+      <h1>Operation</h1>
     </div>
-    <button kendoButton look="outline" class="do-vs-buy-btn">Do vs Buy</button>
+
+    <div class="upload-actions">
+      <div class="upload-info">
+        <span class="upload-label">
+          Last uploaded: <strong class="upload-date">04 Feb 2025</strong>
+        </span>
+        <div class="upload-percentage">71%</div>
+      </div>
+      <button kendoButton look="outline" class="do-vs-buy-btn">Do vs Buy</button>
+    </div>
   </div>
+
+  <!-- Tabs -->
+  <kendo-tabstrip>
+    <kendo-tabstrip-tab title="ISPO">
+      <ng-template kendoTabContent>
+<div class="tab-details">
+        <div class="breadcrumb-line" *ngIf="!isExpandedView">
+          1104096-NCIC III Ammonia/Urea Plant - STCC - Compression, 1104088-Ar Ratawi, 9000133-Leviathan Tex, 1709043-...
+        </div>
+
+        <div class="reassign-alert" *ngIf="hasReassignRequests && !isExpandedView">
+          <div class="alert-text">
+            <span class="material-symbols-outlined">notification_important</span>
+            You have received <strong>3 primary resource re-assignment requests</strong>
+            <a href="#">View requests</a>
+          </div>
+          <button class="close-btn" (click)="hasReassignRequests = false">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+  <!-- Filter Activities Header -->
+<!-- Filter Activities Header Table -->
+<!-- Filter Activities Header -->
+<div class="filter-activities-section" *ngIf="!isExpandedView">
+<div class="filter-activities-header">
+  <div class="filter-activities-title">
+    Filter Activities
+  </div>
+  <div class="filter-activities-actions">
+    <button
+      kendoButton
+      fillMode="flat"
+      themeColor="primary"
+      class="clear-button"
+      (click)="clearFilters()"
+    >
+      Clear Filter
+    </button>
+    <button
+  class="expand-button"
+  (click)="toggleFilterActivityExpandView()"
+>
+  <span class="material-symbols-outlined">
+    {{ isFilterActivityExpandedView ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+  </span>
+</button>
+  </div>
+
 </div>
 
 
-    <!-- Tabs with content -->
-    <kendo-tabstrip>
-      <kendo-tabstrip-tab title="ISPO">
-        <ng-template kendoTabContent>
-          <!-- Breadcrumb / Project Line -->
-          <div class="breadcrumb-line">
-            <strong>1104096-NCIC III Ammonia/Urea Plant - STCC - Compression, 1104088-Ar Ratawi, 9000133-Leviathan Tex, 1709043-...</strong>
-          </div>
+<!-- Filters -->
+<form [formGroup]="filterActivityForm" class="filter-controls-row">
+  <div class="filter-control">
+    <label>View As</label>
+    <kendo-dropdownlist formControlName="viewAs" [data]="viewAsOptions" [defaultItem]="'Select View As'"></kendo-dropdownlist>
+  </div>
 
-          <!-- Alert Box -->
-          <div class="reassign-alert" *ngIf="hasReassignRequests">
-            <span>You have received <strong>3 primary resource re-assignment requests</strong></span>
-            <a href="#">View requests</a>
-          </div>
+  <div class="filter-control">
+    <label>Functions</label>
+    <kendo-dropdownlist formControlName="function" [data]="functionOptions" [defaultItem]="'Select Function'"></kendo-dropdownlist>
+  </div>
 
-      
+  <div class="filter-control">
+    <label>Document Type</label>
+    <kendo-multiselect formControlName="docTypes" [data]="documentTypeOptions" [placeholder]="'Select Document Type'"></kendo-multiselect>
+  </div>
 
-          <!-- Activity Table -->
-          <!-- <div class="activity-table">
-            <kendo-grid
-              [data]="activityData"
-              [pageSize]="10"
-              [pageable]="true"
-              [sortable]="true"
-              scrollable="scrollable"
-            >
-              <kendo-grid-column field="projectId" title="Project ID" [width]="150"></kendo-grid-column>
-              <kendo-grid-column field="activityId" title="Activity ID" [width]="150"></kendo-grid-column>
-              <kendo-grid-column field="activityName" title="Activity Name"></kendo-grid-column>
-              <kendo-grid-column field="primaryResource" title="Primary Resource Name" [width]="200"></kendo-grid-column>
-              <kendo-grid-column field="earlyDate" title="Early Date" [width]="150" format="{0:MM-dd-yyyy}"></kendo-grid-column>
-            </kendo-grid>
-          </div> -->
-        </ng-template>
-      </kendo-tabstrip-tab>
+  <div class="filter-control">
+    <label>Activity Status</label>
+    <kendo-dropdownlist formControlName="status" [data]="statusOptions" [defaultItem]="'Select Status'"></kendo-dropdownlist>
+  </div>
 
-      <kendo-tabstrip-tab title="VDR"></kendo-tabstrip-tab>
-      <kendo-tabstrip-tab title="VDR Revision"></kendo-tabstrip-tab>
-      <kendo-tabstrip-tab title="VDR Finalization"></kendo-tabstrip-tab>
-      <kendo-tabstrip-tab title="OTD Trends"></kendo-tabstrip-tab>
-      <kendo-tabstrip-tab title="Engineering Productivity"></kendo-tabstrip-tab>
-      <kendo-tabstrip-tab title="Technical Alignment"></kendo-tabstrip-tab>
-    </kendo-tabstrip>
+  <div class="filter-control">
+    <label>Activity Type</label>
+    <kendo-multiselect formControlName="activityType" [data]="activityTypeOptions" [placeholder]="'Select Activity Type'"></kendo-multiselect>
+  </div>
 
+  <div class="filter-control">
+    <label>Finish By</label>
+    <kendo-dropdownlist formControlName="finishBy" [data]="finishByOptions" [defaultItem]="'Select Finish By'"></kendo-dropdownlist>
+  </div>
+
+  <div class="filter-control">
+    <label>Date Type</label>
+    <kendo-dropdownlist formControlName="dateType" [data]="dateTypeOptions" [defaultItem]="'Select Date Type'"></kendo-dropdownlist>
   </div>
 </form>
+
+
+
+<!-- Chips -->
+<div class="custom-chip-list">
+  <div
+    class="custom-chip"
+    *ngFor="let chip of chipItems"
+    [class.active]="selectedChip === chip"
+    (click)="selectChip(chip)"
+  >
+    {{ chip }}
+  </div>
+</div>
+
+<!-- Weekly Cards Slider -->
+<div class="week-slider-container">
+    <button class="slider-arrow left" (click)="scrollWeekSlider('left')">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+
+    <div class="week-slider" #weekSlider>
+      <div class="week-status">
+        <kendo-card class="week-tile today">
+          <h4>Today</h4>
+          <p>1 of 1 not completed</p>
+        </kendo-card>
+        <kendo-card class="week-tile this-week">
+          <h4>FW 6, 2025</h4>
+          <p>6 of 15 not completed</p>
+        </kendo-card>
+        <kendo-card class="week-tile">
+          <h4>FW 7, 2025</h4>
+          <p>4 of 8 not completed</p>
+        </kendo-card>
+        <kendo-card class="week-tile">
+          <h4>FW 8, 2025</h4>
+          <p>2 of 10 not completed</p>
+        </kendo-card>
+      </div>
+    </div>
+
+    <button class="slider-arrow right" (click)="scrollWeekSlider('right')">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+  </div>
+</div>
+
+        <!-- Activities Table -->
+         <div class="activities-grid-section">
+        <div class="activities-header">
+          <div class="title-section">
+            <h4>Activities</h4>
+            <span class="result-count">Result: {{ filteredActivityData.length }} Activities</span>
+          </div>
+
+          <div class="toolbar-section">
+            <form [formGroup]="searchForm" class="search-form">
+              <kendo-textbox
+                formControlName="search"
+                placeholder="Search in all column"
+                icon="search"
+              ></kendo-textbox>
+            </form>
+
+            <button
+              type="button"
+              (click)="toggleExpandView()"
+              [title]="isExpandedView ? 'Normal View' : 'Expand View'"
+            >
+              <span class="material-symbols-outlined">
+                {{ isExpandedView ? 'close_fullscreen' : 'open_in_full' }}
+              </span>
+            </button>
+
+            <span class="material-symbols-outlined">settings</span>
+          </div>
+        </div>
+
+        <!-- Grid Section -->
+        <div
+          [ngClass]="{
+            'activity-table': true,
+            'expanded-view': isExpandedView
+          }"
+        >
+          <kendo-grid
+            [data]="filteredActivityData"
+            [pageSize]="10"
+            [pageable]="true"
+            [sortable]="true"
+            scrollable="scrollable"
+          >
+            <kendo-grid-column field="projectId" title="Project ID" [width]="150"></kendo-grid-column>
+            <kendo-grid-column field="activityId" title="Activity ID" [width]="150"></kendo-grid-column>
+            <kendo-grid-column field="activityName" title="Activity Name"></kendo-grid-column>
+            <kendo-grid-column field="primaryResource" title="Primary Resource Name" [width]="200"></kendo-grid-column>
+            <kendo-grid-column field="earlyDate" title="Early Date" [width]="150" format="{0:MM-dd-yyyy}"></kendo-grid-column>
+          </kendo-grid>
+        </div>
+         </div>
+         </div>
+      </ng-template>
+     
+    </kendo-tabstrip-tab>
+
+    <!-- Other Tabs -->
+    <kendo-tabstrip-tab title="VDR"></kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="VDR Revision"></kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="VDR Finalization"></kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="OTD Trends"></kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Engineering Productivity"></kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Technical Alignment"></kendo-tabstrip-tab>
+  </kendo-tabstrip>
+</div>
