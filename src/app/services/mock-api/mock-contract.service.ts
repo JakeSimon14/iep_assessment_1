@@ -13,8 +13,8 @@ export class MockContractService {
    private mockData: FilterItem[] = [
     {
         id: 1,
-        contractname: 'Parent 1',
-        jobnumber: '001',
+        contractname: 'Train 1',
+        jobnumber: 'Job T001',
         isSelected: false,
         isCollapsed: false,
         isFavourite: false,
@@ -22,8 +22,8 @@ export class MockContractService {
         children: [
           {
             id: 2,
-            contractname: 'Child 1.1',
-            jobnumber: '001-1',
+            contractname: 'Train Child 1',
+            jobnumber: 'Job TC001',
             isSelected: false,
             isCollapsed: false,
             isFavourite: false,
@@ -34,8 +34,8 @@ export class MockContractService {
       },
       {
         id: 3,
-        contractname: 'Parent 2',
-        jobnumber: '002',
+        contractname: 'Train 2',
+        jobnumber: 'Job T002',
         isSelected: false,
         isCollapsed: false,
         isFavourite: false,
@@ -43,8 +43,8 @@ export class MockContractService {
       },
       {
         id: 4,
-        contractname: 'Parent 3',
-        jobnumber: '003',
+        contractname: 'Train 3',
+        jobnumber: 'Job T003',
         isSelected: false,
         isCollapsed: false,
         isFavourite: true,
@@ -52,8 +52,8 @@ export class MockContractService {
         children: [
           {
             id: 5,
-            contractname: 'Child 3.1',
-            jobnumber: '003-1',
+            contractname: 'Train Child 3001',
+            jobnumber: 'Job TC3001',
             isSelected: false,
             isCollapsed: false,
             isFavourite: false,
@@ -61,8 +61,8 @@ export class MockContractService {
             children: [
               {
               id: 7,
-            contractname: 'Sub Child 3.1',
-            jobnumber: '003-sub-1',
+            contractname: 'Train Child 3002',
+            jobnumber: 'Job TC3002',
             isSelected: false,
             isCollapsed: false,
             isFavourite: false,
@@ -73,8 +73,8 @@ export class MockContractService {
           },
           {
             id: 6,
-            contractname: 'Child 3.2',
-            jobnumber: '003-2',
+            contractname: 'Train Child 3003',
+            jobnumber: 'Job TC3002',
             isSelected: false,
             isCollapsed: false,
             isFavourite: false,

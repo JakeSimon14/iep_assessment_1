@@ -1,10 +1,33 @@
- .app-header {
-  height: 50px;
-  background-color: #0b3520;
-  border-bottom: 1px solid #ddd;
+$header-height: 50px;
+$header-bg-color: #0b3520;
+$header-border-color: #ddd;
+$toolbar-padding-x: 16px;
+
+$text-color-white: #ffffff;
+$text-color-light: #f0f0f0;
+$text-color-dark: #333;
+$accent-color: #0F766E;
+$badge-color: red;
+
+$icon-size: 24px;
+$profile-size: 40px;
+$badge-font-size: 12px;
+$border-radius-full: 50%;
+$border-radius-md: 4px;
+$spacing-sm: 4px;
+$spacing-md: 8px;
+$spacing-lg: 16px;
+$z-index-dropdown: 1000;
+
+
+
+.app-header {
+  height: $header-height;
+  background-color: $header-bg-color;
+  border-bottom: 1px solid $header-border-color;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 $toolbar-padding-x;
 
   .toolbar {
     display: flex;
@@ -16,14 +39,11 @@
     .toolbar-right {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: $spacing-lg;
 
-       .my-request {
-        color: #fff;
-        cursor: pointer;
-      }
+      .my-request,
       .support-ticket {
-        color: #fff;
+        color: $text-color-white;
         cursor: pointer;
       }
     }
@@ -34,100 +54,100 @@
     }
 
     .icon-button {
-        background: none;
-        border: none;
-        color: #ffffff;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 4px;
-        line-height: 1;
-
-        .material-symbols-outlined {
-          font-size: 24px;
-          vertical-align: middle;
-          color: #fff;
-        }
-      }
+      background: none;
+      border: none;
+      color: $text-color-white;
+      font-size: $icon-size;
+      cursor: pointer;
+      padding: $spacing-sm;
+      line-height: 1;
 
       .material-symbols-outlined {
-  color: white;
-  border-radius: 50%;
-  font-size: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-      .profile-wrapper {
-        position: relative;
+        font-size: $icon-size;
+        vertical-align: middle;
+        color: $text-color-white;
+      }
+    }
 
-        .profile-image {
-          height: 32px;
-          width: 32px;
-          border-radius: 50%;
-          object-fit: cover;
-          border: 2px solid white;
-        }
+    .material-symbols-outlined {
+      color: $text-color-white;
+      border-radius: $border-radius-full;
+      font-size: $icon-size;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
 
-        .profile-badge {
-          position: absolute;
-          top: -4px;
-          right: -6px;
-          background-color: #0F766E;
-          color: #ffffff;
-          font-size: 12px;
-          padding: 2px 6px;
-          border-radius: 12px;
-          font-weight: 600;
-        }
+    .profile-wrapper {
+      position: relative;
+
+      .profile-image {
+        height: 32px;
+        width: 32px;
+        border-radius: $border-radius-full;
+        object-fit: cover;
+        border: 2px solid $text-color-white;
+      }
+
+      .profile-badge {
+        position: absolute;
+        top: -4px;
+        right: -6px;
+        background-color: $accent-color;
+        color: $text-color-white;
+        font-size: $badge-font-size;
+        padding: 2px 6px;
+        border-radius: 12px;
+        font-weight: 600;
+      }
     }
   }
 
   .profile-wrapper {
-  position: relative;
-  cursor: pointer;
+    position: relative;
+    cursor: pointer;
 
-  .profile-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+    .profile-image {
+      width: $profile-size;
+      height: $profile-size;
+      border-radius: $border-radius-full;
+      object-fit: cover;
+    }
 
-  .profile-badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: red;
-    color: white;
-    font-size: 12px;
-    border-radius: 50%;
-    padding: 2px 6px;
-  }
+    .profile-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: $badge-color;
+      color: $text-color-white;
+      font-size: $badge-font-size;
+      border-radius: $border-radius-full;
+      padding: 2px 6px;
+    }
 
-  .profile-menu {
-    position: absolute;
-    right: 0;
-    top: 15px;
-    background: white;
-    list-style: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    min-width: 120px;
-    z-index: 1000;
+    .profile-menu {
+      position: absolute;
+      right: 0;
+      top: 15px;
+      background: $text-color-white;
+      list-style: none;
+      border: 1px solid $header-border-color;
+      border-radius: $border-radius-md;
+      padding: $spacing-md 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      min-width: 120px;
+      z-index: $z-index-dropdown;
 
-    li {
-      padding: 8px 16px;
-      cursor: pointer;
-      white-space: nowrap;
+      li {
+        padding: $spacing-md $spacing-lg;
+        cursor: pointer;
+        white-space: nowrap;
 
-      &:hover {
-        background-color: #f0f0f0;
+        &:hover {
+          background-color: $text-color-light;
+        }
       }
     }
   }
-}
-
 }
