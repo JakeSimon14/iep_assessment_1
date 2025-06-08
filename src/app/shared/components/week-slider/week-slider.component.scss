@@ -1,0 +1,51 @@
+.week-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+  overflow: hidden;
+
+  .slider-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+  }
+
+  .week-slider {
+    overflow-x: auto;
+    flex-grow: 1;
+    scroll-behavior: smooth;
+
+    .week-status {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  .week-tile {
+    min-width: 150px;
+    padding: 16px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    h4 {
+      margin: 0;
+      font-size: 16px;
+    }
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    &.today {
+      border: 2px solid #219653;
+      background-color: #e8f5e9;
+    }
+
+    &.this-week {
+      border: 2px solid #2f80ed;
+      background-color: #e3f2fd;
+    }
+  }
+}

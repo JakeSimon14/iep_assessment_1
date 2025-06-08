@@ -28,9 +28,10 @@
 
 <div *ngIf="activeTab === 'ISPO'">
   <div class="tab-details">
-    <div class="breadcrumb-line" *ngIf="!isExpandedView && selectedBreadcrumb.length">
-  {{ selectedBreadcrumb.join(', ') }}
-</div>
+   <app-breadcrumb
+  *ngIf="!isExpandedView && selectedBreadcrumb.length"
+  [breadcrumbs]="selectedBreadcrumb">
+</app-breadcrumb>
 
     <div class="reassign-alert" *ngIf="hasReassignRequests && !isExpandedView">
       <div class="alert-text">
@@ -58,7 +59,7 @@
       </div>
 
  
-      <form [formGroup]="filterActivityForm" class="filter-controls-row">
+      <form [formGroup]="filterActivityForm" class="filter-controls-row" *ngIf="!isFilterActivityExpandedView">
         <div class="filter-control">
           <label>View As</label>
           <kendo-dropdownlist formControlName="viewAs" [data]="viewAsOptions" [defaultItem]="'Select View As'"></kendo-dropdownlist>
@@ -96,13 +97,13 @@
       </form>
 
   
-      <div class="custom-chip-list">
+      <div class="custom-chip-list" *ngIf="!isFilterActivityExpandedView">
         <div class="custom-chip" *ngFor="let chip of chipItems" [class.active]="selectedChip === chip" (click)="selectChip(chip)">
           {{ chip }}
         </div>
       </div>
 
-      <div class="week-slider-container">
+      <div class="week-slider-container" *ngIf="!isFilterActivityExpandedView">
         <button class="slider-arrow left" (click)="scrollWeekSlider('left')">
           <span class="material-symbols-outlined">chevron_left</span>
         </button>

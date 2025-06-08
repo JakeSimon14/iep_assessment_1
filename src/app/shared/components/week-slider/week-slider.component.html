@@ -1,0 +1,18 @@
+<div class="week-slider-container">
+  <button class="slider-arrow left" (click)="scroll('left')">
+    <span class="material-symbols-outlined">chevron_left</span>
+  </button>
+
+  <div class="week-slider" #weekSlider>
+    <div class="week-status">
+      <kendo-card *ngFor="let tile of tiles" [ngClass]="getCardClass(tile)">
+        <h4>{{ tile.label }}</h4>
+        <p>{{ tile.subtitle }}</p>
+      </kendo-card>
+    </div>
+  </div>
+
+  <button class="slider-arrow right" (click)="scroll('right')">
+    <span class="material-symbols-outlined">chevron_right</span>
+  </button>
+</div>

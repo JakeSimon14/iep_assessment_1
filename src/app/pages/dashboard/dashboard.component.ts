@@ -15,6 +15,9 @@ import { IconsModule } from '@progress/kendo-angular-icons';
 import { Subscription } from 'rxjs';
 import { BreadcrumbSelectionService } from '../../services/breadcrumb-selection.service';
 import { GridDataItem, MockDashboardService } from '../../services/mock-api/mock-dashboard.service';
+import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
+import { WeekTile } from '../../models/week-tile.model';
+import { WeekSliderComponent } from "../../shared/components/week-slider/week-slider.component";
 
 
 @Component({
@@ -32,8 +35,10 @@ import { GridDataItem, MockDashboardService } from '../../services/mock-api/mock
     IndicatorsModule,
     ChipModule,
     CardModule,
-    IconsModule
-  ],
+    IconsModule,
+    BreadcrumbComponent,
+    WeekSliderComponent
+],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -76,6 +81,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   activityTypeOptions = ['560', '510', '505'];
   finishByOptions = ['Late Finish', 'Early Finish'];
   dateTypeOptions = ['Business', 'Calendar'];
+
+weekTiles: WeekTile[] = [
+  { label: 'Today', subtitle: '1 of 1 not completed', type: 'today' },
+  { label: 'FW 6, 2025', subtitle: '6 of 15 not completed', type: 'this-week' },
+  { label: 'FW 7, 2025', subtitle: '4 of 8 not completed' },
+  { label: 'FW 8, 2025', subtitle: '2 of 10 not completed' }
+];
+
 
 
   gridData: GridDataItem[] = [];
