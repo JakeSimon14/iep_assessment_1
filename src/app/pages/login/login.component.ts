@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -16,8 +16,10 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  loginFailed = false;
   submitted = false;
+
+  loginError = signal<string | null>(null);
+  isLoading = signal(false);
 
   constructor(
     private fb: FormBuilder,
@@ -33,20 +35,25 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
+  login(): void {
     this.submitted = true;
-    this.loginFailed = false;
+    this.loginError.set(null);
 
     if (this.loginForm.invalid) return;
 
     const { ssoid, password } = this.loginForm.value;
-    const isAuthenticated = this.authService.login(ssoid, password);
+    this.isLoading.set(true);
 
-    if (isAuthenticated) {
-      localStorage.setItem('isLoggedIn', 'true');
-      this.router.navigate(['/dashboard']);
-    } else {
-      this.loginFailed = true;
-    }
+    this.authService.login(ssoid, password).subscribe({
+      next: () => {
+        localStorage.setItem('isLoggedIn', 'true');
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err: Error) => {
+        this.loginError.set(err.message);
+        this.isLoading.set(false);
+      },
+      complete: () => this.isLoading.set(false),
+    });
   }
 }

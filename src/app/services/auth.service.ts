@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { MockUserService } from './mock-api/mock-user.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router,private mockUserService: MockUserService) { }
 
-   login(ssoid:string,password:string):boolean{
-    debugger;
-    if(ssoid.trim() && password.trim())
-    {
-      localStorage.setItem('isLoggedIn','true');
-      debugger;
-      const user = { name: ssoid };
-      localStorage.setItem('loggedInUser', JSON.stringify(user));
-      return true;
-    }
-       return false;
+    login(ssoid: string, password: string): Observable<boolean> {
+    return new Observable<boolean>((observer) => {
+      setTimeout(() => {
+        const user = this.mockUserService.getUserBySsoid(ssoid);
+
+        if (!user && !password) {
+          observer.error(new Error('SSOID and password are required.'));
+        } else if (!user) {
+          observer.error(new Error('Not a valid user.'));
+        } else if (user.password !== password) {
+          observer.error(new Error('Incorrect password.'));
+        } else {
+          observer.next(true);
+          observer.complete();
+        }
+      }, 1000);
+    });
   }
 
   logout(): void{

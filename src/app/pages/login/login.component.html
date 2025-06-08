@@ -40,9 +40,9 @@
       <label for="rememberMe">Remember Me</label>
     </div>
 
-    <div class="error" *ngIf="loginFailed">
-      Invalid SSO ID or Password
-    </div>
+    <div *ngIf="loginError" class="error-message">
+  {{ loginError }}
+</div>
 
     <button kendoButton type="submit">
       Login
